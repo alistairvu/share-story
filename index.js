@@ -12,21 +12,21 @@ const rootElement = document.getElementById("root")
 checkAuthen()
 
 async function checkAuthen() {
-  try {
-    const user = getItemLocalStorage("currentUser")
-    const res = await firebase
-      .firestore()
-      .collection("users")
-      .where("email", "==", user.email)
-      .where("password", "==", user.password)
-      .get()
-    if (res.empty) {
-      redirect("login")
-    } else {
-      redirect("story")
-    }
-  } catch (e) {
+  const user = getItemLocalStorage("currentUser")
+  if (user === null) {
     redirect("login")
+    return
+  }
+  const res = await firebase
+    .firestore()
+    .collection("users")
+    .where("email", "==", user.email)
+    .where("password", "==", user.password)
+    .get()
+  if (res.empty) {
+    redirect("login")
+  } else {
+    redirect("story")
   }
 }
 
