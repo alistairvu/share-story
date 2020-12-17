@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyCV6MoBEHKH5izlc3UMzW7GgkUGfz8guQ0",
+        authDomain: "users-da0c1.firebaseapp.com",
+        projectId: "users-da0c1",
+        storageBucket: "users-da0c1.appspot.com",
+        messagingSenderId: "817472581168",
+        appId: "1:817472581168:web:4d8f123481f0ff42ea07f5",
+        measurementId: "G-CVWWGPN9L2",
+      }
+      firebase.initializeApp(firebaseConfig)
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
