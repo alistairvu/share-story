@@ -23,6 +23,8 @@ const styles = `
       .time {
         font-size: 12px;
       }
+
+      
 `
 import { convertDate } from "../utils.js"
 class PostItem extends HTMLElement {
@@ -35,7 +37,11 @@ class PostItem extends HTMLElement {
     this.authorName = this.getAttribute("author-name")
     this.time = convertDate(this.getAttribute("time"))
     this.content = this.getAttribute("content")
-
+    this.img = this.getAttribute("img")
+    const imgElm =
+      this.img !== ""
+        ? `<div class="image"><img src=${this.img} style="max-width: 60%;" /></div>`
+        : ""
     this._shadowRoot.innerHTML = `
     <style>
       ${styles}
@@ -45,6 +51,7 @@ class PostItem extends HTMLElement {
         <div class="post-item">
           <div class="author-name">${this.authorName}</div>
           <div class="time">${this.time}</div>
+          ${imgElm}
           <div class="content">
             ${this.content}
           </div>

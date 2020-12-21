@@ -25,8 +25,9 @@ class ListPost extends HTMLElement {
 
     let postHtml = ``
     listPost.map((post) => {
-      const { authorName, createdAt, content, isShown } = post
-      postHtml += `<post-item author-name="${authorName}" time="${createdAt}" content="${content}"></post-item>`
+      const { authorName, createdAt, content, files } = post
+      const file = files ? files[0] : ""
+      postHtml += `<post-item author-name="${authorName}" time="${createdAt}" content="${content}" img="${file}"></post-item>`
     })
 
     this._shadowRoot.innerHTML = `
@@ -60,12 +61,13 @@ class ListPost extends HTMLElement {
   }
 
   appendPostItem(data) {
-    const { authorName, createdAt, content } = getDataFromDoc(data)
+    const { authorName, createdAt, content, files } = getDataFromDoc(data)
+    const file = files ? files[0] : ""
     this._shadowRoot
       .getElementById("list-posts")
       .insertAdjacentHTML(
         "afterbegin",
-        `<post-item author-name="${authorName}" time="${createdAt}" content="${content}"></post-item>`
+        `<post-item author-name="${authorName}" time="${createdAt}" content="${content}" img="${file}" ></post-item>`
       )
   }
 }

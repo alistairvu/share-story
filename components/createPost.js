@@ -15,7 +15,6 @@ const styles = `
     border-radius: 10px;
     resize: none;
     outline: none;
-    font-family: sans-serif;
   }
 
   .post {

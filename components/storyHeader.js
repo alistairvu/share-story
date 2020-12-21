@@ -49,7 +49,6 @@ const styles = `
     </style>`
 
 import { removeFromLocalStorage } from "../utils.js"
-import { redirect } from "../index.js"
 
 class StoryHeader extends HTMLElement {
   constructor() {
@@ -85,7 +84,7 @@ class StoryHeader extends HTMLElement {
       .getElementById("logout-btn")
       .addEventListener("click", () => {
         removeFromLocalStorage("currentUser")
-        redirect("login")
+        router.navigate("/login")
       })
   }
 }

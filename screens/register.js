@@ -55,7 +55,6 @@ button {
 }
 </style>
 `
-import { redirect } from "../index.js"
 const collection = firebase.firestore().collection("users")
 
 class RegisterScreen extends HTMLElement {
@@ -87,7 +86,7 @@ class RegisterScreen extends HTMLElement {
 
     this._shadowRoot
       .getElementById("redirect")
-      .addEventListener("click", () => redirect("login"))
+      .addEventListener("click", () => router.navigate("/login"))
 
     registerForm.addEventListener("submit", async (e) => {
       e.preventDefault()
@@ -161,7 +160,7 @@ class RegisterScreen extends HTMLElement {
       // if email exists -> true, alert that email is already in use
       collection.add(newUser)
       alert("Registration successful!")
-      redirect("login")
+      router.navigate("/login")
     })
   }
 

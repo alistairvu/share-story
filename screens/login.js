@@ -55,7 +55,6 @@ button {
 }
 </style>
 `
-import { redirect } from "../index.js"
 import { getDataFromDoc, saveToLocalStorage } from "../utils.js"
 const collection = firebase.firestore().collection("users")
 
@@ -86,7 +85,7 @@ class LoginScreen extends HTMLElement {
 
     this._shadowRoot
       .getElementById("redirect")
-      .addEventListener("click", () => redirect("register"))
+      .addEventListener("click", () => router.navigate("/register"))
 
     loginForm.addEventListener("submit", async (e) => {
       e.preventDefault()
@@ -129,7 +128,7 @@ class LoginScreen extends HTMLElement {
 
       if (verify) {
         alert("Login success")
-        redirect("story")
+        router.navigate("/story")
         saveToLocalStorage("currentUser", JSON.stringify(user))
       } else {
         this.setError("password", "Wrong password.")
